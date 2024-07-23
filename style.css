@@ -5,18 +5,44 @@
     border: 1px solid black;
 }
 
+
+.logo{
+    width: 100px;
+    height: 100%;
+}
+
+.nav-items{   
+    padding: 0 10px 0;
+    width: auto;
+}
+
 .nav-items > ul{
-    display: flex;
     list-style-type: none;
-    /* flex-direction: column-reverse; */
-    /* justify-content: flex-end; */
+    display: flex;
 }
 
 .nav-items > ul > li{
     padding: 10px;
 }
 
-.logo{
-    /* height:70px ; */
-    width: 100px;
+
+/* Body CSS */
+
+.restaurant-list{
+    width: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:center;
 }
+
+.card{
+    width: 200px;
+    border: 1px solid black;
+    padding: 10px;
+    margin: 10px;
+}
+
+.card > img{
+    width: 100%;
+}
+
