@@ -5,6 +5,16 @@
   display: flex;
 }
 
+.logo {
+  width: 100px;
+  height: 100%;
+}
+
+.nav-items {
+  width: auto;
+  padding: 0 10px;
+}
+
 .nav-items > ul {
   list-style-type: none;
   display: flex;
@@ -14,7 +24,21 @@
   padding: 10px;
 }
 
-.logo {
-  width: 100px;
+.restaurant-list {
+  flex-wrap: wrap;
+  justify-content: center;
+  width: auto;
+  display: flex;
+}
+
+.card {
+  border: 1px solid #000;
+  width: 200px;
+  margin: 10px;
+  padding: 10px;
+}
+
+.card > img {
+  width: 100%;
 }
 /*# sourceMappingURL=index.3a01df49.css.map */
