@@ -2951,66 +2951,6 @@ var prevRefreshSig = window.$RefreshSig$;
 $parcel$ReactRefreshHelpers$6024.prelude(module);
 
 try {
-// import React from "react";
-// import ReactDOM,{createRoot} from "react-dom/client";
-//       /*
-//       Header
-//         - Logo
-//         - Nav items (Right side)
-//         - cart
-//       Body
-//         - Search bar
-//         - RestaurantsList
-//           - RestaurantCard
-//             - Image
-//             - Name
-//             - Rating
-//             - Cusines
-//       Footer
-//         - Links
-//         - Copyrights
-//       */
-// const Title = () => (
-//   <a href="/">
-//   <img className="logo" alt="logo" src="https://yt3.ggpht.com/ytc/AMLnZu_EC-ECXAxRAixWGEfMsE1rdSoetBHyxmLNdtCB=s900-c-k-c0x00ffffff-no-rj"/>
-//   </a>
-// );
-// const HeaderComponent = () => {
-//   return (
-//     <div className="header">
-//       {
-//         <Title/>    // Title 
-//       }
-//       <div className="nav-items">
-//         <ul>
-//           <li>Home</li>
-//           <li>About Us</li>
-//           <li>Contact</li>
-//           <li>Cart</li>
-//         </ul>
-//       </div>
-//     </div>
-//   );
-// };
-// const Body = () => {
-//   return (
-//     <h4>Body</h4>
-//   );
-// };
-// const Footer = () => {
-//   return (
-//     <h4>Footer</h4>
-//   )
-// }
-// const AppLayout = () => {
-//   return {
-//     // <Header/>
-//     // <Body/>
-//     // <Footer/>
-//   }
-// };
-// const root = ReactDOM.createRoot(document.getElementById("root"));
-// root.render(<HeaderComponent/>);
 // ## Namaste React Course by Akshay Saini
 // Chapter 04 - Talk is Cheap, show me the code
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
@@ -3044,12 +2984,12 @@ const Title = ()=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("a", {
             alt: "Logo"
         }, void 0, false, {
             fileName: "app.js",
-            lineNumber: 96,
+            lineNumber: 27,
             columnNumber: 5
         }, undefined)
     }, void 0, false, {
         fileName: "app.js",
-        lineNumber: 95,
+        lineNumber: 26,
         columnNumber: 21
     }, undefined);
 _c = Title;
@@ -3060,7 +3000,7 @@ const Header = ()=>{
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(Title, {}, void 0, false, {
                 fileName: "app.js",
-                lineNumber: 102,
+                lineNumber: 33,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -3071,50 +3011,51 @@ const Header = ()=>{
                             children: "Home"
                         }, void 0, false, {
                             fileName: "app.js",
-                            lineNumber: 105,
+                            lineNumber: 36,
                             columnNumber: 11
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
                             children: "About"
                         }, void 0, false, {
                             fileName: "app.js",
-                            lineNumber: 106,
+                            lineNumber: 37,
                             columnNumber: 11
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
                             children: "Contact"
                         }, void 0, false, {
                             fileName: "app.js",
-                            lineNumber: 107,
+                            lineNumber: 38,
                             columnNumber: 11
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
                             children: "Cart"
                         }, void 0, false, {
                             fileName: "app.js",
-                            lineNumber: 108,
+                            lineNumber: 39,
                             columnNumber: 11
                         }, undefined)
                     ]
                 }, void 0, true, {
                     fileName: "app.js",
-                    lineNumber: 104,
+                    lineNumber: 35,
                     columnNumber: 9
                 }, undefined)
             }, void 0, false, {
                 fileName: "app.js",
-                lineNumber: 103,
+                lineNumber: 34,
                 columnNumber: 7
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "app.js",
-        lineNumber: 101,
+        lineNumber: 32,
         columnNumber: 10
     }, undefined);
 };
 _c1 = Header;
 // RestaurantList is JSON Data for displaying cards
+// Built by using multiple restaurant's data 
 const restaurantList = [
     {
         type: "restaurant",
@@ -4964,45 +4905,46 @@ const restaurantList = [
     }
 ];
 // Restaurant card component: Image, name, cuisine
-const RestaurantCard = (props)=>{
+const RestaurantCard = ({ name, //destructured important things received from the body
+cuisines, lastMileTravelString, cloudinaryImageId })=>{
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         className: "card",
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
-                src: "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/" + restaurantList[0].data?.cloudinaryImageId
+                src: "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/" + cloudinaryImageId
             }, void 0, false, {
                 fileName: "app.js",
-                lineNumber: 1770,
+                lineNumber: 1709,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
-                children: restaurantList[0].data?.name
+                children: name
             }, void 0, false, {
                 fileName: "app.js",
-                lineNumber: 1771,
+                lineNumber: 1710,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
-                children: restaurantList[0].data?.cuisines.join(", ")
+                children: cuisines.join(", ")
             }, void 0, false, {
                 fileName: "app.js",
-                lineNumber: 1772,
+                lineNumber: 1711,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h4", {
                 children: [
-                    restaurantList[0].data?.lastMileTravelString,
+                    lastMileTravelString,
                     " minutes"
                 ]
             }, void 0, true, {
                 fileName: "app.js",
-                lineNumber: 1773,
+                lineNumber: 1712,
                 columnNumber: 7
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "app.js",
-        lineNumber: 1769,
+        lineNumber: 1708,
         columnNumber: 10
     }, undefined);
 };
@@ -5012,18 +4954,22 @@ _c2 = RestaurantCard;
 const Body = ()=>{
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         className: "restaurant-list",
-        children: restaurantList.map((restaurant)=>{
-            return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(RestaurantCard, {
-                ...restaurant.data
-            }, restaurant.data.id, false, {
-                fileName: "app.js",
-                lineNumber: 1784,
-                columnNumber: 14
-            }, undefined);
+        children: //restaurant is a prop, we have given a prop to thsi component named restaurant whose value is equal to restaurantList's first restaurant
+        restaurantList.map((restaurant)=>{
+            return /*#__PURE__*/ (0, _react.createElement)(RestaurantCard, {
+                ...restaurant.data,
+                key: restaurant.data.id,
+                __source: {
+                    fileName: "app.js",
+                    lineNumber: 1725,
+                    columnNumber: 14
+                },
+                __self: undefined
+            }); // similar to {RestaurantCard(restaurantList[0])}i.e. it is a function call only
         })
     }, void 0, false, {
         fileName: "app.js",
-        lineNumber: 1782,
+        lineNumber: 1721,
         columnNumber: 10
     }, undefined);
 };
@@ -5034,7 +4980,7 @@ const Footer = ()=>{
         children: "Footer"
     }, void 0, false, {
         fileName: "app.js",
-        lineNumber: 1791,
+        lineNumber: 1732,
         columnNumber: 10
     }, undefined);
 };
@@ -5045,17 +4991,17 @@ const AppLayout = ()=>{
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(Header, {}, void 0, false, {
                 fileName: "app.js",
-                lineNumber: 1797,
+                lineNumber: 1738,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(Body, {}, void 0, false, {
                 fileName: "app.js",
-                lineNumber: 1798,
+                lineNumber: 1739,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(Footer, {}, void 0, false, {
                 fileName: "app.js",
-                lineNumber: 1799,
+                lineNumber: 1740,
                 columnNumber: 7
             }, undefined)
         ]
@@ -5065,7 +5011,7 @@ _c5 = AppLayout;
 const root = (0, _clientDefault.default).createRoot(document.getElementById("root"));
 root.render(/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(AppLayout, {}, void 0, false, {
     fileName: "app.js",
-    lineNumber: 1803,
+    lineNumber: 1744,
     columnNumber: 13
 }, undefined));
 var _c, _c1, _c2, _c3, _c4, _c5;
