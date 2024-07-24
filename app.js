@@ -1,73 +1,3 @@
-// import React from "react";
-// import ReactDOM,{createRoot} from "react-dom/client";
-//       /*
-//       Header
-//         - Logo
-//         - Nav items (Right side)
-//         - cart
-//       Body
-//         - Search bar
-//         - RestaurantsList
-//           - RestaurantCard
-//             - Image
-//             - Name
-//             - Rating
-//             - Cusines
-//       Footer
-//         - Links
-//         - Copyrights
-//       */
-
-// const Title = () => (
-//   <a href="/">
-//   <img className="logo" alt="logo" src="https://yt3.ggpht.com/ytc/AMLnZu_EC-ECXAxRAixWGEfMsE1rdSoetBHyxmLNdtCB=s900-c-k-c0x00ffffff-no-rj"/>
-//   </a>
-// );
-    
- 
-// const HeaderComponent = () => {
-//   return (
-//     <div className="header">
-//       {
-//         <Title/>    // Title 
-//       }
-//       <div className="nav-items">
-//         <ul>
-//           <li>Home</li>
-//           <li>About Us</li>
-//           <li>Contact</li>
-//           <li>Cart</li>
-//         </ul>
-//       </div>
-//     </div>
-//   );
-// };
-
-// const Body = () => {
-//   return (
-//     <h4>Body</h4>
-
-//   );
-// };
-
-// const Footer = () => {
-//   return (
-//     <h4>Footer</h4>
-//   )
-// }
-
-// const AppLayout = () => {
-//   return {
-//     // <Header/>
-//     // <Body/>
-//     // <Footer/>
-//   }
-// };
-
-
-// const root = ReactDOM.createRoot(document.getElementById("root"));
-
-// root.render(<HeaderComponent/>);
 
 // ## Namaste React Course by Akshay Saini
 // Chapter 04 - Talk is Cheap, show me the code
@@ -98,7 +28,10 @@ import ReactDOM from "react-dom/client";
 // Title component for display logo
 const Title = () => (
   <a href="/">
-    <img className="logo" src="https://fooodvilla.netlify.app/logo.2e81ae67.png" alt="Logo" />
+    <img 
+    className="logo" 
+    src="https://fooodvilla.netlify.app/logo.2e81ae67.png" 
+    alt="Logo" />
   </a>
 );
 
@@ -120,7 +53,10 @@ const Header = () => {
   );
 };
 
+
 // RestaurantList is JSON Data for displaying cards
+// Built by using multiple restaurant's data 
+
 const restaurantList = [
   {
     type: "restaurant",
@@ -1942,14 +1878,19 @@ const restaurantList = [
 
 
 // Restaurant card component: Image, name, cuisine
-const RestaurantCard = (props) => {
+const RestaurantCard = ({
+  name,                       //destructured important things received from the body
+  cuisines, 
+  lastMileTravelString, 
+  cloudinaryImageId
+}) => {
   return (
     <div className="card">
       <img 
-      src={"https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/" + restaurantList[0].data?.cloudinaryImageId} />
-      <h2>{restaurantList[0].data?.name}</h2>
-      <h3>{restaurantList[0].data?.cuisines.join(", ")}</h3>
-      <h4>{restaurantList[0].data?.lastMileTravelString} minutes</h4>
+      src={"https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/" + cloudinaryImageId} />
+      <h2>{name}</h2>
+      <h3>{cuisines.join(", ")}</h3>
+      <h4>{lastMileTravelString} minutes</h4>
     </div>
   );
 };
@@ -1962,12 +1903,17 @@ const RestaurantCard = (props) => {
 const Body = () => {
   return (
     <div className="restaurant-list">
-      {restaurantList.map((restaurant) => {
-        return <RestaurantCard key={restaurant.data.id} {...restaurant.data} />;
-      })}
+     {                                                        //restaurant is a prop, we have given a prop to thsi component named restaurant whose value is equal to restaurantList's first restaurant
+        restaurantList.map((restaurant) => {
+          return <RestaurantCard  {...restaurant.data} key={restaurant.data.id} />;   // similar to {RestaurantCard(restaurantList[0])}i.e. it is a function call only
+        })
+      }
     </div>
   );
 };
+
+
+
 
 // Footer component for footer section
 const Footer = () => {
