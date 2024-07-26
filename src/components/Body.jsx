@@ -1,11 +1,11 @@
 import { restaurantList } from "../constants";
 import RestaurantCard  from "./RestaurantCard";
 import { useState, useEffect } from "react";
-
+import Shimmer from "./Shimmer"; 
 
 function filterData(searchText, restaurants){
 
-  const filterData = restaurants.filter((restaurant) => restaurant.data.name.includes(searchText));
+  const filterData = restaurants.filter((restaurant) => restaurant?.info?.name?.toLowerCase().includes(searchText.toLowerCase()));
   return filterData;
 }
 
@@ -16,7 +16,8 @@ const Body = () => {
     //searchText is a local state variable
     // destructuring is done here
 
-    const[restaurants,setRestaurants] = useState(restaurantList);
+    const[allRestaurants,setAllRestaurants] = useState([]);
+    const[filteredRestaurants,setFilteredRestaurants] = useState([]);
     const[searchText ,setSearchText] = useState("");     //To create state variable
 
     useEffect(() => {
@@ -35,15 +36,24 @@ const Body = () => {
       console.log(json);
 
       //optional chaining
-      const fetchedRestaurants = json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants || [];
       
-      setRestaurants(fetchedRestaurants);
+      setAllRestaurants(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+      setFilteredRestaurants(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
 
     }
 
     console.log("render");
 
-    return (
+    //conditional rendering
+    //if restaurant == empty => Shimmer UI
+    //else restaurant == data => actual data UI
+
+    //not render component
+    if(!allRestaurants) return null;
+
+    if(filteredRestaurants?.length === 0) return <h1>No restaurant found!</h1>
+
+    return (allRestaurants?.length === 0 ) ? <Shimmer/> :  (
     <>
     <div className="search-container">
         <input 
@@ -60,9 +70,9 @@ const Body = () => {
         className="search-btn"
         onClick={ () => {
           //need to filter the search data
-          const data = filterData(searchText, restaurants);
+          const data = filterData(searchText, allRestaurants);
           //update the state -> restaurants variable
-          setRestaurants(data);
+          setFilteredRestaurants(data);
 
         }}  
         >
@@ -74,8 +84,7 @@ const Body = () => {
     {
        //restaurant is a prop, we have given a prop to this component named restaurant whose value is equal to restaurantList's first restaurant
           
-
-       restaurants.map((restaurant) => {
+       filteredRestaurants.map((restaurant) => {
             return <RestaurantCard  {...restaurant.info} key={restaurant.info.id} />;   // similar to {RestaurantCard(restaurantList[0])}i.e. it is a function call only
           })
     }
