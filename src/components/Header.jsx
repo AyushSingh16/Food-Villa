@@ -1,3 +1,10 @@
+import { useState } from "react";
+
+
+const loggedInUser = () => {
+  //api call to check authentication
+  return false;
+};
 
 // Title component for display logo
 const Title = () => (
@@ -11,6 +18,9 @@ const Title = () => (
 
 // Header component for header section: Logo, Nav Items
 const Header = () => {
+
+  const  [isLoggedIn, setIsLoggedIn] = useState(true);
+
   return (
     <div className="header">
       <Title />
@@ -22,6 +32,11 @@ const Header = () => {
           <li>Cart</li>
         </ul>
       </div>
+      {isLoggedIn ? (
+        <button onClick={() => setIsLoggedIn(false)}>Logout</button>
+        ) : (
+        <button onClick={() => setIsLoggedIn(true)}>Login</button>
+        )}
     </div>
   );
 };
