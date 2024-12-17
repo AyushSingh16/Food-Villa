@@ -1,14 +1,18 @@
-//THE CODE
-
-import React from "react";
+import React,{lazy,Suspense} from "react";
 import ReactDOM from "react-dom/client";
-//Default import
-// import Header from "./components/Header";
-//Named import
 import Header from "./components/Header";
 import Body from "./components/Body";
 import Footer from "./components/Footer";
+import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
+import About from "./components/About";
+import Error from "./components/Error";
+import Contact from "./components/Contact";
+import RestaurantMenu from "./components/RestaurantMenu";
+import Profile from "./components/Profile";
+import Shimmer from "./components/Shimmer";
+// import Instamart from "./components/Instamart";
 
+const Instamart = lazy(()=>import("./components/Instamart"));
 
 /* My Food App structure will look like this, 
             1) Header
@@ -28,37 +32,62 @@ import Footer from "./components/Footer";
        
 */
 
-
-
-
-
-
-
-
-
-// RestaurantList is JSON Data for displaying cards
-// Built by using multiple restaurant's data 
-
-
-
-
-
-
-// Body Component for body section: It contain all restaurant cards
-
-// We are mapping restaurantList array and passing data to RestaurantCard component as props with unique key as index
-
-
 // AppLayout component to show: Header, Body, Footer
-const AppLayout = () => {
+function AppLayout() {
   return (
     <>
       <Header />
-      <Body />
+      <Outlet />
       <Footer />
     </>
   );
-};
+}
+
+const appRouter = createBrowserRouter([
+  {
+    path: "/",
+    errorElement: <Error />,
+    element: <AppLayout />,
+    children: [
+      {
+        path: "/about",
+        errorElement: <Error />,
+        element: <About />,
+        children: [
+          {
+            path: "profile",
+            errorElement: <Error />,
+            element: <Profile />,
+          },
+        ],
+      },
+      {
+        path: "/",
+        errorElement: <Error />,
+        element: <Body />,
+      },
+      {
+        path: "/contact",
+        errorElement: <Error />,
+        element: <Contact />,
+      },
+      {
+        path: "/restaurant/:id",
+        errorElement: <Error />,
+        element: <RestaurantMenu />,
+      },
+      {
+        path: "/instamart",
+        errorElement: <Error />,
+        element: (
+          <Suspense fallback={<Shimmer/>} >
+            <Instamart />
+          </Suspense>
+        ),
+      },
+    ],
+  },
+]);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<AppLayout />);
+root.render(<RouterProvider router={appRouter} />);

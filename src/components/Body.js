@@ -1,20 +1,12 @@
-import { restaurantList } from "../constants";
+// import { restaurantList } from "../constants";
 import RestaurantCard  from "./RestaurantCard";
 import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer"; 
-
-function filterData(searchText, restaurants){
-
-  const filterData = restaurants.filter((restaurant) => restaurant?.info?.name?.toLowerCase().includes(searchText.toLowerCase()));
-  return filterData;
-}
-
+import { Link } from "react-router-dom";
+import {filterData} from "../utils/helper";
+import useOnline from "../utils/useOnline";
 
 const Body = () => {
-    // let searchTxt = "KFC";     //one-way data binding
-    
-    //searchText is a local state variable
-    // destructuring is done here
 
     const[allRestaurants,setAllRestaurants] = useState([]);
     const[filteredRestaurants,setFilteredRestaurants] = useState([]);
@@ -22,7 +14,6 @@ const Body = () => {
 
     useEffect(() => {
 
-      //API call
       getRestaurants(); 
 
     },[]);
@@ -42,18 +33,19 @@ const Body = () => {
 
     }
 
-    console.log("render");
+    const isOnline = useOnline();
 
-    //conditional rendering
-    //if restaurant == empty => Shimmer UI
-    //else restaurant == data => actual data UI
+    if(!isOnline)
+    {
+      return <h1>Offline, Please check your Internet Connection!!</h1> 
+    }
+      
+    
 
-    //not render component
     if(!allRestaurants) return null;
 
-    if(filteredRestaurants?.length === 0) return <h1>No restaurant found!</h1>
-
-    return (allRestaurants?.length === 0 ) ? <Shimmer/> :  (
+    return (allRestaurants?.length === 0 ) ? <Shimmer/> :  
+    (
     <>
     <div className="search-container">
         <input 
@@ -84,8 +76,12 @@ const Body = () => {
     {
        //restaurant is a prop, we have given a prop to this component named restaurant whose value is equal to restaurantList's first restaurant
           
-       filteredRestaurants.map((restaurant) => {
-            return <RestaurantCard  {...restaurant.info} key={restaurant.info.id} />;   // similar to {RestaurantCard(restaurantList[0])}i.e. it is a function call only
+          filteredRestaurants.map((restaurant) => {
+            return (
+            <Link to={"/restaurant/"  + restaurant?.info?.id} key={restaurant.info.id} >
+              <RestaurantCard  {...restaurant.info} />
+            </Link>
+          );   // similar to {RestaurantCard(restaurantList[0])}i.e. it is a function call only
           })
     }
     </div>
