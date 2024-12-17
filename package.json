@@ -1,7 +1,7 @@
 {
   "name": "namaste-react",
   "version": "1.0.0",
-  "description": "This is live learning",
+  "description": "This is react",
   "scripts": {
     "start": "parcel index.html",
     "build": "parcel build index.html",
@@ -13,14 +13,30 @@
   "devDependencies": {
     "@babel/core": "^7.24.5",
     "babel-plugin-transform-remove-console": "^6.9.4",
-    "parcel": "^2.12.0",
-    "process": "^0.11.10"
+    "parcel": "^2.13.2",
+    "parcel-bundler": "^1.12.5",
+    "postcss": "^8.4.49",
+    "process": "^0.11.10",
+    "react-router-dom": "^7.0.2",
+    "tailwindcss": "^3.4.16"
   },
   "dependencies": {
+    "eslint-plugin-import": "^2.31.0",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "react-router": "^7.0.2",
+    "react-scripts": "^5.0.1"
   },
   "browserslist": [
     "last 2 versions"
-  ]
+  ],
+  "main": "app.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AyushSingh16/Food-Villa.git"
+  },
+  "bugs": {
+    "url": "https://github.com/AyushSingh16/Food-Villa/issues"
+  },
+  "homepage": "https://github.com/AyushSingh16/Food-Villa#readme"
 }
