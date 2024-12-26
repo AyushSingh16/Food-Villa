@@ -27419,7 +27419,7 @@ const Header = ()=>{
     const [isLoggedIn, setIsLoggedIn] = (0, _react.useState)(true);
     const isOnline = (0, _useOnlineDefault.default)();
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        className: "flex justify-between bg-pink-200 shadow-lg",
+        className: "flex justify-between bg-pink-200 shadow-lg sm:bg-blue-50 md:bg-yellow-50",
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(Title, {}, void 0, false, {
                 fileName: "src/components/Header.js",
@@ -36816,11 +36816,11 @@ const Body = ()=>{
     }, undefined) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                className: "search-container",
+                className: "search-container p-5 my-5 bg-pink-200",
                 children: [
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
                         type: "text",
-                        className: "search-input",
+                        className: "focus:bg-blue-100 m-2 p-2",
                         placeholder: "Search",
                         value: searchText,
                         onChange: (e)=>{
@@ -36833,7 +36833,7 @@ const Body = ()=>{
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
-                        className: "search-btn",
+                        className: "search-btn p-2 m-2 bg-purple-500 rounded-md text-white hover:bg-purple-700",
                         onClick: ()=>{
                             //need to filter the search data
                             const data = (0, _helper.filterData)(searchText, allRestaurants);
@@ -36853,7 +36853,7 @@ const Body = ()=>{
                 columnNumber: 5
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                className: "restaurant-list",
+                className: "flex flex-wrap",
                 children: //restaurant is a prop, we have given a prop to this component named restaurant whose value is equal to restaurantList's first restaurant
                 filteredRestaurants.map((restaurant)=>{
                     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Link), {
@@ -36909,7 +36909,7 @@ var _constants = require("../constants");
 const RestaurantCard = ({ name, //destructured important things received from the body
 cuisines, lastMileTravelString, cloudinaryImageId })=>{
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        className: "card",
+        className: "card w-[200px] p-2 m-2 shadow-lg bg-pink-200",
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
                 src: (0, _constants.IMG_CDN_URL) + cloudinaryImageId
@@ -36919,6 +36919,7 @@ cuisines, lastMileTravelString, cloudinaryImageId })=>{
                 columnNumber: 9
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
+                className: "font-bold text-xl",
                 children: name
             }, void 0, false, {
                 fileName: "src/components/RestaurantCard.js",
