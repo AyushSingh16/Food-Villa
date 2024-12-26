@@ -5,5 +5,5 @@ dist/
 .vscode
 
 node_modules
-app.js
+
 app.js
