@@ -47,10 +47,10 @@ const Body = () => {
     return (allRestaurants?.length === 0 ) ? <Shimmer/> :  
     (
     <>
-    <div className="search-container">
+    <div className="search-container p-5 my-5 bg-pink-200">
         <input 
           type="text" 
-          className="search-input" 
+          className="focus:bg-blue-100 m-2 p-2" 
           placeholder="Search" 
           value={searchText}
           onChange={(e) => {
@@ -59,7 +59,7 @@ const Body = () => {
         }}
         />
         <button 
-        className="search-btn"
+        className="search-btn p-2 m-2 bg-purple-500 rounded-md text-white hover:bg-purple-700"
         onClick={ () => {
           //need to filter the search data
           const data = filterData(searchText, allRestaurants);
@@ -72,7 +72,7 @@ const Body = () => {
         </button>
     </div>
     
-    <div className="restaurant-list">
+    <div className="flex flex-wrap">
     {
        //restaurant is a prop, we have given a prop to this component named restaurant whose value is equal to restaurantList's first restaurant
           

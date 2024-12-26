@@ -21,7 +21,7 @@ const Header = () => {
   const isOnline = useOnline();
 
   return (
-    <div className="flex justify-between bg-pink-200 shadow-lg">
+    <div className="flex justify-between bg-pink-200 shadow-lg sm:bg-blue-50 md:bg-yellow-50">
       <Title />
       <div className="nav-items">
         <ul className="flex py-10">
