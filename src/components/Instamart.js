@@ -41,13 +41,7 @@ const Instamart = () => {
         }
         
         isVisible={visibleSection == "about"}
-        setIsVisible={()=>setSectionConfig(
-            {
-                showAbout:true,
-                showTeam:false,
-                showCareers:false,
-            }
-        )}
+        setIsVisible={()=>setVisibleSection("about")}
       />
 
       <Section
@@ -57,13 +51,7 @@ const Instamart = () => {
         }
 
         isVisible={visibleSection == "team"}
-        setIsVisible={()=>setSectionConfig(
-            {
-                showAbout:false,
-                showTeam:true,
-                showCareers:false,
-            }
-        )}
+        setIsVisible={()=>setVisibleSection("team")}
       />
 
       <Section
@@ -73,13 +61,7 @@ const Instamart = () => {
         }
 
         isVisible={visibleSection == "careers"}
-        setIsVisible={()=>setSectionConfig(
-            {
-                showAbout:false,
-                showTeam:false,
-                showCareers:true,
-            }
-        )}
+        setIsVisible={()=>setVisibleSection("careers")}
       />
     </div>
   );

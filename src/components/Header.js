@@ -1,7 +1,10 @@
-import { useState } from "react";
+import { useState,useContext } from "react";
 
 import { Link } from "react-router-dom";
 import useOnline from "../utils/useOnline";
+import userContext from "../utils/userContext";
+import { useSelector } from "react-redux";
+import store from "../utils/store";
 
 // Title component for display logo
 const Title = () => (
@@ -19,6 +22,12 @@ const Header = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(true);
 
   const isOnline = useOnline();
+
+  const {user} = useContext(userContext);
+
+  const cartItems = useSelector(store => store.cart.items);
+
+
 
   return (
     <div className="flex justify-between bg-pink-200 shadow-lg sm:bg-blue-50 md:bg-yellow-50">
@@ -38,12 +47,17 @@ const Header = () => {
             <li className="px-2">Contact</li>
           </Link>
 
+          <Link to="/cart">
+            <li className="px-2">Cart - {cartItems.length} items</li>
+          </Link>
+
           <Link to="/instamart"> 
             <li> Instamart </li>
           </Link>
         </ul>
       </div>
-      <h1>{isOnline ? "✅" : "❌"}</h1>
+      <h1 className="p-10">{isOnline ? "✅" : "❌"}</h1>
+      <span className="p-10">{user.name}</span>
       {isLoggedIn ? (
         <button onClick={() => setIsLoggedIn(false)}>Logout</button>
       ) : (

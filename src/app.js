@@ -1,15 +1,21 @@
-import React,{lazy,Suspense} from "react";
+import React,{lazy,Suspense, useState} from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./components/Header";
 import Body from "./components/Body";
 import Footer from "./components/Footer";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import About from "./components/About";
+import Cart from "./components/Cart";
 import Error from "./components/Error";
 import Contact from "./components/Contact";
 import RestaurantMenu from "./components/RestaurantMenu";
 import Profile from "./components/Profile";
 import Shimmer from "./components/Shimmer";
+import userContext from "./utils/userContext";
+import { Provider } from "react-redux";
+import store from "./utils/store";
+
+
 // import Instamart from "./components/Instamart";
 
 const Instamart = lazy(()=>import("./components/Instamart"));
@@ -34,12 +40,23 @@ const Instamart = lazy(()=>import("./components/Instamart"));
 
 // AppLayout component to show: Header, Body, Footer
 function AppLayout() {
+
+  const [user, setUser] = useState({
+    name: "Ayush Singh",
+    password: "support@gmail.com",
+  });
+  
   return (
-    <>
-      <Header />
-      <Outlet />
-      <Footer />
-    </>
+    <Provider store={store}>
+        <Header />
+      <userContext.Provider 
+      value={{
+        user:user,   
+      }}>
+       <Outlet />
+       <Footer />
+      </userContext.Provider>
+    </Provider>
   );
 }
 
@@ -70,6 +87,11 @@ const appRouter = createBrowserRouter([
         path: "/contact",
         errorElement: <Error />,
         element: <Contact />,
+      },
+      {
+        path: "/cart",
+        errorElement: <Error />,
+        element: <Cart />,
       },
       {
         path: "/restaurant/:id",
